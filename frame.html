@@ -1,0 +1,23 @@
+<html>
+    <body>
+        <p>
+            这里是iframe
+        </p>
+        <button id="btn">click</button>
+        <script>
+            // 通过window==window.top判断当前窗口是否是顶级创建，从而执行不同的逻辑
+            if (window!=window.top){
+                alert("this is sub frame")
+            }else {
+                alert("this is top window")
+            }
+            btn = document.getElementById("btn")
+            btn.onclick=function (){
+                console.log("click")
+                // 像父窗口发送消息
+                parent = window.parent
+                parent.postMessage("message from frame","*")
+            }
+        </script>
+    </body>
+</html>
